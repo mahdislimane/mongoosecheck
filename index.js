@@ -17,10 +17,9 @@ app.post("/", (req, res) => {
 
 //Use model.find() to Search Your Database
 app.get("/find", (req, res) => {
-  Person.find((err, data) => {
-    if (err) throw err;
-    res.send(data);
-  });
+  Person.find()
+    .then((persons) => res.send(persons))
+    .catch((err) => console.log(err));
 });
 
 //Use model.findOne() to Return a Single Matching Document from Your Database
@@ -89,7 +88,7 @@ app.get("/search/:favoriteFoods", (req, res) => {
   Person.find({ favoriteFoods: { $in: req.params.favoriteFoods } })
     .sort("name")
     .limit(2)
-    .select("name favoriteFoods")
+    .select("-age")
     .exec((err, data) => {
       if (err) throw err;
       res.send(data);
