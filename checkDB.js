@@ -6,7 +6,7 @@ class Database {
   _connect() {
     mongoose
       .connect(
-        `mongodb+srv://MahdiKazama:Mahdi1986@cluster0.yqd8f.mongodb.net/test`,
+        `mongodb+srv://*****:*****@*****.******.mongodb.net/test`,
         {
           useNewUrlParser: true,
           useUnifiedTopology: true,
